@@ -31,17 +31,26 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>Screen Sharing by iMi</h1>
+        <h1>iMi Bildschirmfreigabe</h1>
     </div>
 
 
     <section class="experiment">
         <div class="make-center">
-            <input type="text" id="room-id" value="abcdef">
-            <button id="open-room">Bildschirm freigeben</button>
-            <button id="join-room">Freigebenen Bildschirm öffnen</button>
-            <button id="open-or-join-room">Auto Open Or Join Room</button>
+            Code: <input type="text" id="room-id" value="">
+            <button id="open-room" class="btn btn-warning">Bildschirm freigeben</button>
+            <button id="join-room" class="btn btn-success">Freigebenen Bildschirm öffnen</button>
         </div>
+
+        <div class="share-alert alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p>
+
+            <strong>Bitte teilen Sie den folgenden Link oder den angezeigen Code Ihrem Partner mit:</strong>
+            <a id="shareLink"></a>
+        </div>
+
 
         <div id="videos-container"></div>
 
@@ -83,20 +92,11 @@
     // .......................UI Code........................
     // ......................................................
 
-    document.getElementById('open-room').onclick = function () {
-        this.disabled = true;
-        connection.open(document.getElementById('room-id').value);
-    };
 
-    document.getElementById('join-room').onclick = function () {
-        this.disabled = true;
-        connection.join(document.getElementById('room-id').value);
-    };
-
-    document.getElementById('open-or-join-room').onclick = function () {
+    /*document.getElementById('open-or-join-room').onclick = function () {
         this.disabled = true;
         connection.openOrJoin(document.getElementById('room-id').value);
-    };
+    };*/
 
     // ......................................................
     // ..................RTCMultiConnection Code.............
@@ -104,7 +104,10 @@
 
     var connection = new RTCMultiConnection();
 
-    document.getElementById('room-id').value = connection.token();
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
 
     connection.session = {
         screen: true,
@@ -120,15 +123,51 @@
     connection.onstream = function (event) {
         videosContainer.appendChild(event.mediaElement);
     };
+
+
+    joinRoom = function() {
+        if ($('#room-id').val() == '') {
+            window.alert('Bitte geben Sie zuerst den Code Ihres Partners ein.');
+            return;
+        }
+
+        this.disabled = true;
+        connection.join(document.getElementById('room-id').value);
+    }
+
+    if (window.location.hash) {
+        $('#room-id').val(window.location.hash.substr(1));
+        joinRoom();
+    }
+
+    document.getElementById('open-room').onclick = function () {
+        if ($('#room-id').val() == '') {
+            $('#room-id').val(getRandomInt(10000,99999));
+        }
+
+        roomId = $('#room-id').val();
+        this.disabled = true;
+        connection.open(roomId);
+
+        var link = window.location.href + '#' + roomId;
+        $('#shareLink').html(link);
+        $('#shareLink').attr('href', link);
+
+        $('.share-alert').fadeIn();
+    };
+
+
+    $('#join-room').click(joinRoom);
 </script>
 
 
-<footer>
-    <p>
-        screen.imi.de <a href="http://www.imi.de/">by iMi digital GmbH</a>
-    </p>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">
+            <a href="https://screen.imi.de">screen.imi.de</a> by <a href="http://www.imi.de/">iMi digital GmbH</a>
+        </p>
+    </div>
 </footer>
-
 </body>
 
 </html>
