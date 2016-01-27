@@ -2,27 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta name="google-site-verification" content="zhJ273gZGLJ_Cbl-muzPYYTR6jD7sCCgufDIRS5h4SE" />
-    <script>
-        if(location.protocol === 'http:') {
-            location.href = location.href.replace(location.protocol, 'https:');
-        }
-    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
 
-    <title>RTCMultiConnection-v3.0 Demos</title>
-    
-    <meta name="description" content="A javascript wrapper library supporting approximately all possible peer-to-peer features. It is having approximately all kinds of demo-applications." />
+    <title>Screen Sharing using RTCMultiConnection-v3.0</title>
+
+    <meta name="description" content="OneWay Screen Sharing using RTCMultiConnection v3.0" />
     <meta name="keywords" content="WebRTC,RTCMultiConnection,Demos,Experiments,Samples,Examples" />
+
+    <style>
+        video {
+            object-fit: fill;
+            width: 30%;
+        }
+        button,
+        input,
+        select {
+            font-weight: normal;
+            padding: 2px 4px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 
 <body>
     <article>
 
         <header style="text-align: center;">
-            <h1><a href="https://github.com/muaz-khan/RTCMultiConnection">RTCMultiConnection-v3.0</a>  Demos / <a href="https://rtcmulticonnection.herokuapp.com/">LIVE Demos</a></h1>
+            <h1>Screen Sharing using RTCMultiConnection-v3.0</h1>
             <p>
                 <a href="https://rtcmulticonnection.herokuapp.com/">HOME</a>
                 <span> &copy; </span>
@@ -34,134 +51,73 @@
             </p>
         </header>
 
+
         <div class="github-stargazers"></div>
 
-        <section class="experiment" id="demos">
-            <h2><a href="#demos">RTCMultiConnection-v3.0 Demos</a></h2>
-            <ol>
-                <li>
-                    <a href="/demos/file-sharing.html">Share files with single or multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Video-Conferencing.html">Setup Video Conferencing between multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Audio-Conferencing.html">Setup Audio Conferencing between multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Video-Broadcasting.html">Setup Video OneWay Broadcasting between multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Audio+Video+TextChat+FileSharing.html">Share Audio+Video+TextChat+FileSharing between multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/TextChat+FileSharing.html">Share TextChat+FileSharing among multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/share-part-of-screen.html">Share part of screen</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Audio+ScreenSharing.html">TwoWay Audio & OneWay Screen Sharing</a> (NOT-Functional YET)
-                </li>
-
-                <li>
-                    <a href="/demos/Screen-Sharing.html">Share Screen in OneWay among multiple users</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Disconnect+Rejoin.html">Leave & Rejoin same room, again and again!</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Password-Protected-Rooms.html">Create Password-Protected Video Conferencing Rooms</a>
-                </li>
-
-                <li>
-                    <a href="/demos/replaceTrack.html">Test RTPSender.replaceTrack API (only in Firefox)</a>
-                </li>
-
-                <li>
-                    <a href="/demos/applyConstraints.html">Test MediaStreamTrack.applyConstraints API (only in Firefox Nightly)</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Firebase-Demo.html">Video Conferencing using Firebase as a signaling medium</a>
-                </li>
-
-                <li>
-                    <a href="/demos/PubNub-Demo.html">Video Conferencing using PubNub as a signaling medium</a>
-                </li>
-
-                <li>
-                    <a href="/demos/custom-socket-event.html">Share custom-private messages among users using Socket.io</a>
-                </li>
-
-                <li>
-                    <a href="/demos/checkPresence.html">Detect presence before opening or joining the room.</a>
-                </li>
-
-                <li>
-                    <a href="/demos/getPublicModerators.html">Get list of all public moderators (rooms initiators).</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Video-Scalable-Broadcast.html">Scalable OneWay Video Broadcasting</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Files-Scalable-Broadcast.html">Scalable OneWay File Sharing</a>
-                </li>
-
-                <li>
-                    <a href="/demos/Switch-Cameras.html">Switch/Change Cameras in a Live Conference</a>
-                </li>
-            </ol>
-
-            <blockquote class="inline">
-                You can try RTCMultiConnection v2.2.2 demos as well:<br>
-                <a href="https://www.webrtc-experiment.com/RTCMultiConnection/">https://www.webrtc-experiment.com/RTCMultiConnection/</a>
-            </blockquote>
-        </section>
-
-        <section class="experiment" id="install">
-            <h2>
-                <a href="#install">How to install v3.0?</a>
-                
-                <a href="https://www.npmjs.com/package/rtcmulticonnection-v3"><img src="https://img.shields.io/npm/v/rtcmulticonnection-v3.svg"></a>
-                <a href="https://www.npmjs.com/package/rtcmulticonnection-v3"><img src="https://img.shields.io/npm/dm/rtcmulticonnection-v3.svg"></a>
-            </h2>
-            <pre>
-sudo npm install <a href="https://www.npmjs.com/package/rtcmulticonnection-v3">rtcmulticonnection-v3</a>
-
-# or MOST preferred one
-mkdir RTCMultiConnection-v3.0 && cd RTCMultiConnection-v3.0
-wget <a href="http://dl.webrtc-experiment.com/rtcmulticonnection-v3.tar.gz">http://dl.webrtc-experiment.com/rtcmulticonnection-v3.tar.gz</a>
-tar -zxvf rtcmulticonnection-v3.tar.gz
-ls -a
-node server.js
-</pre>
-
-        </section>
-
         <section class="experiment">
-            <h2>How to Configure v3.0?</h2>
+            <div class="make-center">
+                <input type="text" id="room-id" value="abcdef">
+                <button id="open-room">Open Room</button>
+                <button id="join-room">Join Room</button>
+                <button id="open-or-join-room">Auto Open Or Join Room</button>
+            </div>
 
-            <br>
-            <a href="https://github.com/muaz-khan/RTCMultiConnection/wiki/Configure-v3.0">wiki/Configure-v3.0</a>
+            <div id="videos-container"></div>
 
             <br><br>
-            <h2>
-    <a href="https://github.com/muaz-khan/RTCMultiConnection">Open-Sourced as well!</a>
-        </h2>
-
+            (Install <a href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk" target="_blank">Chrome</a> / or / <a href="https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi" target="_blank">Firefox</a> extension) - Extensions are <a href="https://github.com/muaz-khan?tab=repositories">open-sourced</a>!
+            <div id="videos-container"></div>
         </section>
+
+        <!-- <script src="/RTCMultiConnection.min.js"></script> -->
+        <script src="https://cdn.webrtc-experiment.com:443/rmc3.min.js"></script>
+
+        <!-- socket.io for signaling -->
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+            // ......................................................
+            // .......................UI Code........................
+            // ......................................................
+
+            document.getElementById('open-room').onclick = function() {
+                this.disabled = true;
+                connection.open(document.getElementById('room-id').value);
+            };
+
+            document.getElementById('join-room').onclick = function() {
+                this.disabled = true;
+                connection.join(document.getElementById('room-id').value);
+            };
+
+            document.getElementById('open-or-join-room').onclick = function() {
+                this.disabled = true;
+                connection.openOrJoin(document.getElementById('room-id').value);
+            };
+
+            // ......................................................
+            // ..................RTCMultiConnection Code.............
+            // ......................................................
+
+            var connection = new RTCMultiConnection();
+
+            document.getElementById('room-id').value = connection.token();
+
+            connection.session = {
+                screen: true,
+                oneway: true
+            };
+
+            connection.sdpConstraints.mandatory = {
+                OfferToReceiveAudio: false,
+                OfferToReceiveVideo: false
+            };
+
+            var videosContainer = document.getElementById('videos-container');
+            connection.onstream = function(event) {
+                videosContainer.appendChild(event.mediaElement);
+            };
+        </script>
 
         <section class="experiment own-widgets latest-commits">
             <h2 class="header" id="updates" style="color: red;padding-bottom: .1em;"><a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master">Latest Updates</a></h2>
