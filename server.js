@@ -2,7 +2,7 @@
 // MIT License    - www.WebRTC-Experiment.com/licence
 // Documentation  - github.com/muaz-khan/RTCMultiConnection
 
-var isUseHTTPs = !(!!process.env.PORT || !!process.env.IP);
+var isUseHTTPs = true;
 
 var server = require(isUseHTTPs ? 'https' : 'http'),
     url = require('url'),
