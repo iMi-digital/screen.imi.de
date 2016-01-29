@@ -27,11 +27,11 @@ function serverHandler(request, response) {
     }
 
     if (fs.statSync(filename).isDirectory()) {
-        if (filename.indexOf('/demos/') !== -1) {
-            filename = filename.replace('/demos/', '');
-            filename += '/demos/index.html';
+        if (filename.indexOf('/app/') !== -1) {
+            filename = filename.replace('/app/', '');
+            filename += '/app/index.html';
         } else {
-            filename += '/demos/index.html';
+            filename += '/app/index.html';
         }
     }
 

@@ -52,4 +52,20 @@ body {
 .container .text-muted {
     margin: 20px 0;
 }
+
+.page-header h1 img {
+    height: 60px;
+}
+.page-header h1 sup {
+    font-size: 14px;
+    vertical-align: super;
+}
+
+.plugins img {
+    height: 30px;
+    padding-right: 10px;
+}
+
+.plugins img.firefox-logo {
+    padding-right: 6px;
 }
