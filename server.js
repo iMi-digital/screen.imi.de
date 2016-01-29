@@ -11,7 +11,7 @@ var server = require(isUseHTTPs ? 'https' : 'http'),
 
 function serverHandler(request, response) {
     var uri = url.parse(request.url).pathname,
-        filename = path.join(process.cwd(), uri);
+        filename = path.join(require('path').dirname(require.main.filename), uri);
 
     var stats;
 
@@ -65,6 +65,21 @@ if (isUseHTTPs) {
 app = app.listen(process.env.PORT || 9001, process.env.IP || "0.0.0.0", function() {
     var addr = app.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
+
+    app.listen(80, 'localhost', null, function() {
+    // Listening
+    try {
+      console.log('Old User ID: ' + process.getuid() + ', Old Group ID: ' + process.getgid());
+      process.setgid('screen-imi-de');
+      process.setuid('screen-imi-de');
+      console.log('New User ID: ' + process.getuid() + ', New Group ID: ' + process.getgid());
+    } catch (err) {
+      console.log('Cowardly refusing to keep the process alive as root.');
+      process.exit(1);
+    }
+});
+
+
 });
 
 require('./Signaling-Server.js')(app, function(socket) {
