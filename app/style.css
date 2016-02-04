@@ -1,7 +1,8 @@
 video {
-    object-fit: fill;
-    width: 30%;
+    height: calc(100vh - 500px);
+    min-height: 200px;
 }
+
 button,
 input,
 select {
