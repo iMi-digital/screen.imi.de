@@ -24,6 +24,16 @@ connection.session = {
     oneway: true
 };
 
+connection.__getScreenConstraints = connection.getScreenConstraints;
+connection.getScreenConstraints = function(callback) {
+    connection.__getScreenConstraints(function(error, screen_constraints) {
+        if (connection.DetectRTC.browser.name === 'Chrome') {
+            delete screen_constraints.mandatory.minAspectRatio;
+        }
+        callback(error, screen_constraints);
+    });
+};
+
 connection.sdpConstraints.mandatory = {
     OfferToReceiveAudio: false,
     OfferToReceiveVideo: false
