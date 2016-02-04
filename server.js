@@ -70,9 +70,14 @@ app = app.listen(process.env.PORT || 9001, process.env.IP || "0.0.0.0", function
     // Listening
     try {
       console.log('Old User ID: ' + process.getuid() + ', Old Group ID: ' + process.getgid());
+
+      if (process.getuid() == 0) {
       process.setgid('screen-imi-de');
       process.setuid('screen-imi-de');
       console.log('New User ID: ' + process.getuid() + ', New Group ID: ' + process.getgid());
+      } else {
+          console.log('Fine');
+      }
     } catch (err) {
       console.log('Cowardly refusing to keep the process alive as root.');
       process.exit(1);
