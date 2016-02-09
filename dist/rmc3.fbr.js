@@ -170,14 +170,6 @@ function FileBufferReaderHelper() {
                 };
             }
 
-            if (chunk.end) {
-                for (var f in options.file) {
-                    if (![chunk[f]]) {
-                        chunk[f] = options.file[f];
-                    }
-                }
-            }
-
             options.extra = options.extra || {
                 userid: 0
             };
@@ -255,7 +247,8 @@ function FileBufferReaderHelper() {
             type: file.type,
             lastModifiedDate: !!file.lastModifiedDate ? file.lastModifiedDate.toString() : '',
             start: true,
-            extra: options
+            extra: options.extra || options,
+            url: URL.createObjectURL(file)
         });
 
         var blob, reader = new FileReader();
@@ -281,7 +274,7 @@ function FileBufferReaderHelper() {
                             url: URL.createObjectURL(file),
                             type: file.type,
                             end: true,
-                            extra: options
+                            extra: options.extra || options
                         });
                     }
                 });
@@ -309,7 +302,7 @@ function FileBufferReaderHelper() {
                     name: file.name || options.extra.fileName,
                     lastModifiedDate: !!file.lastModifiedDate ? file.lastModifiedDate.toString() : '',
                     type: file.type,
-                    extra: options
+                    extra: options.extra || options
                 });
 
                 currentPosition++;
