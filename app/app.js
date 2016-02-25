@@ -14,6 +14,44 @@
 
 var connection = new RTCMultiConnection();
 
+connection.getExternalIceServers = false;
+connection.iceServers = [];
+
+// put your data in these 6-lines
+var ident       = 'imidigial';
+var secret      = '317d7ac2-dba1-11e5-bfdd-fd61327a0b0a';
+var domain      = 'screen.imi.de';
+var application = 'screen.imi.de';
+var room        = 'screen.imi.de';
+var secure      = '1';
+
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+var url = 'https://service.xirsys.com/ice';
+var xhr = createCORSRequest('POST', url);
+xhr.onload = function() {
+    var iceServers = JSON.parse(xhr.responseText).d.iceServers;
+    connection.iceServers = iceServers;
+};
+xhr.onerror = function() {
+    console.error('Woops, there was an error making xhr request.');
+};
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+xhr.send('ident='+ident+'&secret='+secret+'&domain='+domain+'&application='+application+'&room='+room+'&secure='+secure);
+
+
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
