@@ -21,8 +21,8 @@ connection.iceServers = [];
 var ident       = 'imidigial';
 var secret      = '317d7ac2-dba1-11e5-bfdd-fd61327a0b0a';
 var domain      = 'screen.imi.de';
-var application = 'screen.imi.de';
-var room        = 'screen.imi.de';
+var application = 'default';
+var room        = 'default';
 var secure      = '1';
 
 function createCORSRequest(method, url) {
