@@ -18,7 +18,7 @@ connection.getExternalIceServers = false;
 connection.iceServers = [];
 
 // put your data in these 6-lines
-var ident       = 'imidigial';
+var ident       = 'imidigital';
 var secret      = '317d7ac2-dba1-11e5-bfdd-fd61327a0b0a';
 var domain      = 'screen.imi.de';
 var application = 'default';
